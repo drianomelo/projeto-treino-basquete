@@ -13,6 +13,10 @@ class TreinoSeeder extends Seeder
      */
     public function run()
     {
-        //
+        DB::table('treinos')->insert([
+            'horario_inicio' => "15:00",
+            'horario_fim' => "18:00",
+            'quadra_id' => 1,
+        ]);
     }
 }

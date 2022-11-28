@@ -13,6 +13,8 @@ class QuadraSeeder extends Seeder
      */
     public function run()
     {
-        //
+        DB::table('quadras')->insert([
+            'endereco' => "UFS",
+        ]);
     }
 }

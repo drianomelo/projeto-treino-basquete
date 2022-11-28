@@ -13,6 +13,10 @@ class ModalidadeSeeder extends Seeder
      */
     public function run()
     {
-        //
+        DB::table('modalidades')->insert([
+            'nome' => "Basquete",
+            'posicao' => "Point Guard",
+            'quadra_id' => 1,
+        ]);
     }
 }
