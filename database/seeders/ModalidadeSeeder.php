@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
+use DB;
 
 class ModalidadeSeeder extends Seeder
 {
@@ -15,7 +16,7 @@ class ModalidadeSeeder extends Seeder
     {
         DB::table('modalidades')->insert([
             'nome' => "Basquete",
-            'posicao' => "Point Guard",
+            'posicao' => "PG",
             'quadra_id' => 1,
         ]);
     }
