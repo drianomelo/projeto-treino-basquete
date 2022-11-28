@@ -15,6 +15,7 @@ class CreateQuadrasTable extends Migration
     {
         Schema::create('quadras', function (Blueprint $table) {
             $table->id();
+            $table->string('endereco');
             $table->timestamps();
         });
     }

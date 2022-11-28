@@ -15,6 +15,8 @@ class CreateTreinosTable extends Migration
     {
         Schema::create('treinos', function (Blueprint $table) {
             $table->id();
+            $table->string('horario_inicio');
+            $table->string('horario_fim');
             $table->timestamps();
         });
     }
