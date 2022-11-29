@@ -16,8 +16,7 @@ class ModalidadeSeeder extends Seeder
     {
         DB::table('modalidades')->insert([
             'nome' => "Basquete",
-            'posicao' => "PG",
-            'quadra_id' => 1,
+            'posicoes' => "PG",
         ]);
     }
 }

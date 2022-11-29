@@ -15,8 +15,7 @@ class PessoaHasTreinoSeeder extends Seeder
     public function run()
     {
         DB::table('pessoas_has_treinos')->insert([
-            'pessoas_id' => 1,
-            'treinos_id' => 1,
+
         ]);
     }
 }

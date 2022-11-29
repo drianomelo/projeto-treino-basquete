@@ -18,7 +18,7 @@ class DatabaseSeeder extends Seeder
             AtributoSeeder::class,
             ModalidadeSeeder::class,
             PessoaHasTreinoSeeder::class,
-            PessoaSeeder::class.
+            PessoaSeeder::class,
             QuadraSeeder::class,
             TreinoSeeder::class,
         ));
