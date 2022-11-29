@@ -15,6 +15,8 @@ class CreatePessoasHasTreinosTable extends Migration
     {
         Schema::create('pessoas_has_treinos', function (Blueprint $table) {
             $table->id();
+            $table->string('pessoa_id');
+            $table->string('treino_id');
             $table->timestamps();
         });
     }

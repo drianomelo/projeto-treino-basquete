@@ -17,6 +17,7 @@ class CreatePessoasTable extends Migration
             $table->id();
             $table->string('nome');
             $table->string('posicao');
+            $table->string('atributo_id');
             $table->timestamps();
         });
     }
