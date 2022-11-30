@@ -31,6 +31,10 @@ class Pessoa extends Model
 
     ];
 
+    public function getAtributoAttribute() {
+        return $this->atributoRelationship;
+    }
+
     /**
      * Get the Atributos that belong to the pessoa.
      *

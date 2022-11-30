@@ -19,7 +19,6 @@ class Treino extends Model
      * @var array
      */
     protected $hidden = [
-
     ];
 
     /**
@@ -28,16 +27,26 @@ class Treino extends Model
      * @var array
      */
     protected $appends = [
-
     ];
+
+    public function getPessoaAttribute()
+    {
+        return $this->pessoaRelationship;
+    }
+
+    public function getQuadraAttribute()
+    {
+        return $this->quadraRelationship;
+    }
 
     /**
      * The Pessoas that belong to the treino.
      *
      * @return Pessoa
      */
-    public function pessoaRelationship() {
-        return $this->belongsToMany(Pessoa::class,'treinos_has_pessoas','treino_id','pessoa_id');
+    public function pessoaRelationship()
+    {
+        return $this->belongsToMany(Pessoa::class, 'treinos_has_pessoas', 'treino_id', 'pessoa_id');
     }
 
     /**
@@ -45,7 +54,8 @@ class Treino extends Model
      *
      * @return Quadra
      */
-    public function quadraRelationship() {
-        return $this->hasMany(Quadra::class,'treino_id');
+    public function quadraRelationship()
+    {
+        return $this->hasMany(Quadra::class, 'treino_id');
     }
 }

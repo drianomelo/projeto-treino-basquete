@@ -31,6 +31,10 @@ class Modalidade extends Model
 
     ];
 
+    public function getQuadraAttribute() {
+        return $this->quadraRelationship;
+    }
+
     /**
      * Get the Quadras that belong to the modalidades.
      *
