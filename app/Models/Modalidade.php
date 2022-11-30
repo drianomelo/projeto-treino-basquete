@@ -37,6 +37,6 @@ class Modalidade extends Model
      * @return Quadra
      */
     public function quadraRelationship() {
-        return $this->hasMany(Quadra::class,'modalidade_id');
+        return $this->hasMany(Quadra::class, 'modalidade_id');
     }
 }

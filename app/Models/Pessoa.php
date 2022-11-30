@@ -37,6 +37,6 @@ class Pessoa extends Model
      * @return Atributo
      */
     public function atributoRelationship() {
-        return $this->belongsTo(Atributo::class,'atributo_id');
+        return $this->belongsTo(Atributo::class,'atributo_id');//Relacionamento 1 para 1
     }
 }
