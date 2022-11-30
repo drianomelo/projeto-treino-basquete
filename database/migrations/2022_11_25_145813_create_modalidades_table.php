@@ -17,7 +17,7 @@ class CreateModalidadesTable extends Migration
             $table->id();
             $table->string('nome');
             $table->string('posicoes');
-            $table->string('quadra_id');
+            $table->foreignId('quadra_id')->constrained('quadras');
             $table->timestamps();
         });
     }
