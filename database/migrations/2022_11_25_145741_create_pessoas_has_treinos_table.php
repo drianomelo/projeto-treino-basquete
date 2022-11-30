@@ -14,7 +14,6 @@ class CreatePessoasHasTreinosTable extends Migration
     public function up()
     {
         Schema::create('pessoas_has_treinos', function (Blueprint $table) {
-            $table->id();
             $table->foreignId('pessoa_id')->constrained('pessoas');
             $table->foreignId('treino_id')->constrained('treinos');
             $table->timestamps();

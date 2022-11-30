@@ -17,7 +17,8 @@ class CreateTreinosTable extends Migration
             $table->id();
             $table->string('horario_inicio');
             $table->string('horario_fim');
-            $table->foreignId('quadra_id')->constrained('quadras');
+            $table->string('endereco');
+            $table->foreignId('modalidade_id')->constrained('modalidades');
             $table->timestamps();
         });
     }

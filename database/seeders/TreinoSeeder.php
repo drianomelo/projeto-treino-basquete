@@ -17,7 +17,20 @@ class TreinoSeeder extends Seeder
         DB::table('treinos')->insert([
             'horario_inicio' => "15:00",
             'horario_fim' => "18:00",
-            'quadra_id' => 1,
+            'endereco' => "UFS",
+            'modalidade_id' => 1,
+        ]);
+        DB::table('treinos')->insert([
+            'horario_inicio' => "21:00",
+            'horario_fim' => "23:00",
+            'endereco' => "UNIT",
+            'modalidade_id' => 1,
+        ]);
+        DB::table('treinos')->insert([
+            'horario_inicio' => "19:00",
+            'horario_fim' => "20:00",
+            'endereco' => "UFS",
+            'modalidade_id' => 2,
         ]);
     }
 }

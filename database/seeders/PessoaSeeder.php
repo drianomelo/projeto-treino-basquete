@@ -19,5 +19,15 @@ class PessoaSeeder extends Seeder
             'posicao' => "Point Guard",
             'atributo_id' => 1,
         ]);
+        DB::table('pessoas')->insert([
+            'nome' => "Rodrygo Santos",
+            'posicao' => "Center",
+            'atributo_id' => 2,
+        ]);
+        DB::table('pessoas')->insert([
+            'nome' => "Adriel Melo",
+            'posicao' => "Shooting Guard",
+            'atributo_id' => 3,
+        ]);
     }
 }

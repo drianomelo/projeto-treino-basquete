@@ -16,8 +16,6 @@ class CreateModalidadesTable extends Migration
         Schema::create('modalidades', function (Blueprint $table) {
             $table->id();
             $table->string('nome');
-            $table->string('posicoes');
-            $table->foreignId('quadra_id')->constrained('quadras');
             $table->timestamps();
         });
     }
