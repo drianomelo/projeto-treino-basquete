@@ -30,4 +30,22 @@ class Treino extends Model
     protected $appends = [
 
     ];
+
+    /**
+     * The Pessoas that belong to the treino.
+     *
+     * @return Pessoa
+     */
+    public function pessoaRelationship() {
+        return $this->belongsToMany(Pessoa::class,'treinos_has_pessoas','treino_id','pessoa_id');
+    }
+
+    /**
+     * Get the Quadras that belong to the treino.
+     *
+     * @return Quadra
+     */
+    public function quadraRelationship() {
+        return $this->hasMany(Quadra::class,'treino_id');
+    }
 }

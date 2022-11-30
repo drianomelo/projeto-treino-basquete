@@ -30,4 +30,13 @@ class Pessoa extends Model
     protected $appends = [
 
     ];
+
+    /**
+     * Get the Atributos that belong to the pessoa.
+     *
+     * @return Atributo
+     */
+    public function atributoRelationship() {
+        return $this->belongsTo(Atributo::class,'atributo_id');
+    }
 }

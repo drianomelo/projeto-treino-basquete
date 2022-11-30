@@ -30,4 +30,13 @@ class Modalidade extends Model
     protected $appends = [
 
     ];
+
+    /**
+     * Get the Quadras that belong to the modalidades.
+     *
+     * @return Quadra
+     */
+    public function quadraRelationship() {
+        return $this->hasMany(Quadra::class,'modalidade_id');
+    }
 }
