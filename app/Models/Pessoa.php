@@ -35,6 +35,10 @@ class Pessoa extends Model
         return $this->atributoRelationship;
     }
 
+    public function getTreinoAttribute() {
+        return $this->treinoRelationship;
+    }
+
     /**
      * Get the Atributos that belong to the pessoa.
      *
@@ -42,5 +46,9 @@ class Pessoa extends Model
      */
     public function atributoRelationship() {
         return $this->belongsTo(Atributo::class,'atributo_id');//Relacionamento 1 para 1
+    }
+
+    public function treinoRelationship() {
+        return $this->belongsToMany(Treino::class,'pessoas_has_treinos','pessoa_id','treino_id');//Relacionamento muitos para muitos;
     }
 }
