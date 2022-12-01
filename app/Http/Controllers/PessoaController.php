@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Modalidade;
 use Illuminate\Http\Request;
 use App\Models\Pessoa;
 
@@ -15,6 +16,8 @@ class PessoaController extends Controller
      */
     public function __construct(Pessoa $pessoas){
         $this->pessoas = $pessoas;
+        $this->atributos = new Atributo;
+        $this->treinos = Treino::all()->pluck('endereco', 'id');
     }
 
     /**
@@ -36,7 +39,9 @@ class PessoaController extends Controller
      */
     public function create()
     {
-        //
+        $treinos = $this->treinos;
+
+        return view('pessoas.form', compact('treinos'));
     }
 
     /**
