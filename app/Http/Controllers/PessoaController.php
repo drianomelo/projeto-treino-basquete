@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Modalidade;
 use Illuminate\Http\Request;
 use App\Models\Pessoa;
+use App\Models\Atributo;
+use App\Models\Treino;
+use App\Models\Modalidade;
 
 class PessoaController extends Controller
 {

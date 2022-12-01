@@ -20,3 +20,4 @@ Route::get('/', function () {
 
 Route::get('/index', [PessoaController::class, 'index'])->name('pessoas.index');
 
+Route::get('/create', [PessoaController::class, 'create'])->name('pessoas.create');
