@@ -19,7 +19,6 @@ class DatabaseSeeder extends Seeder
             ModalidadeSeeder::class,
             PessoaHasTreinoSeeder::class,
             PessoaSeeder::class,
-            QuadraSeeder::class,
             TreinoSeeder::class,
         ));
 
