@@ -19,3 +19,4 @@ Route::get('/', function () {
 });
 
 Route::get('/index', [PessoaController::class, 'index'])->name('pessoas.index');
+
