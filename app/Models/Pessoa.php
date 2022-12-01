@@ -31,6 +31,8 @@ class Pessoa extends Model
 
     ];
 
+    //MÉTODOS GETTER
+
     public function getAtributoAttribute() {
         return $this->atributoRelationship;
     }
@@ -38,6 +40,32 @@ class Pessoa extends Model
     public function getTreinoAttribute() {
         return $this->treinoRelationship;
     }
+
+    //MÉTODOS SETTER
+
+    /**
+     * Set the atributo's id.
+     *
+     * @param  int $value
+     * @return void
+     */
+    public function setATributoAttribute($value) {
+        if(isset($value)){
+            $this->attributes['atributo_id'] = Atributo::where('id', $value)->first()->id;
+        }
+    }
+    /**
+     * Set the treino attribute.
+     *
+     * @param  array $value
+     * @return void
+     */
+
+    public function setTreinoAttribute($value) {
+            $this->treinoRelationship()->sync($value);
+    }
+
+    //RELACIONAMENTOS
 
     /**
      * Get the Atributos that belong to the pessoa.
