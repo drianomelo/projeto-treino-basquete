@@ -24,7 +24,9 @@ class PessoaController extends Controller
      */
     public function index()
     {
-        //
+        $pessoas = $this->contatos->all();
+
+        return view('pessoas.index', compact('pessoas'));
     }
 
     /**
