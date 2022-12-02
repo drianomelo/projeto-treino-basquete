@@ -21,3 +21,5 @@ Route::get('/', function () {
 Route::get('/index', [PessoaController::class, 'index'])->name('pessoas.index');
 
 Route::get('/create', [PessoaController::class, 'create'])->name('pessoas.create');
+
+Route::post('/store', [PessoaController::class, 'store'])->name('pessoas.store');

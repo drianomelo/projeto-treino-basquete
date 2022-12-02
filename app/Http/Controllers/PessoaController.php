@@ -66,22 +66,25 @@ class PessoaController extends Controller
             ])->id,
         ]);
 
-        // $modalidades = $request->modalidade;
-        // foreach($modalidades as $modalidade) {
-        //     Modalidade::where($request->modalidade,'id')->update([
-        //         'pessoa_id' => $pessoa->id,
-        //     ]);
-        // }
-
-        $treinos = $request->treino;
-
-        if(isset($treinos)) {
-            foreach($treinos as $treino) {
-                $pessoa->treinos()->attach($treino);
+        if (isset($treinos)) {
+            $modalidades_id = $request->modalidade;
+            foreach ($modalidades_id as $modalidade_id) {
+                Modalidade::where($modalidade_id, 'id')->first()->update([
+                    'pessoa_id' => $pessoa->id,
+                ]);
             }
         }
 
+        //Muitos para muitos
+        $treinos_id = $request->treino;
 
+        if(isset($treinos_id)) {
+            foreach($treinos_id as $treino_id) {
+                $pessoa->treinos()->attach($treino_id);
+            }
+        }
+
+        return redirect()->route('pessoas.index');
     }
 
     /**
