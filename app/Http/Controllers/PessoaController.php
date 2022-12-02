@@ -54,7 +54,34 @@ class PessoaController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $pessoa = $this->pessoas->create([
+            'nome' => $request->nome,
+            'posicao' => $request->posicao,
+            'atributo_id' => $this->atributos->create([ //Chave estrangeira na tabela principal
+                'altura' => $request->altura,
+                'peso' => $request->peso,
+                'idade' => $request->idade,
+                'nivel_de_experiencia' => $request->nivel_de_experiencia,
+                'telefone' => $request->telefone,
+            ])->id,
+        ]);
+
+        // $modalidades = $request->modalidade;
+        // foreach($modalidades as $modalidade) {
+        //     Modalidade::where($request->modalidade,'id')->update([
+        //         'pessoa_id' => $pessoa->id,
+        //     ]);
+        // }
+
+        $treinos = $request->treino;
+
+        if(isset($treinos)) {
+            foreach($treinos as $treino) {
+                $pessoa->treinos()->attach($treino);
+            }
+        }
+
+
     }
 
     /**
