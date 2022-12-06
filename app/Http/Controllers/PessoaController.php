@@ -95,10 +95,12 @@ class PessoaController extends Controller
      */
     public function show($id)
     {
+        $form = 'disabled';
+
         $pessoa = $this->pessoas->find($id);
         $treinos = $this->treinos;
 
-        return view('pessoas.form', compact('pessoa', 'treinos'));
+        return view('pessoas.form', compact('pessoa', 'treinos', 'form'));
     }
 
     /**
