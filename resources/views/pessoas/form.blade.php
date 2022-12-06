@@ -1,3 +1,8 @@
 <!DOCTYPE html>
-{{$pessoa}}
+
+@if(isset($pessoa)){
+    {{$pessoa}}
+}
+@endif
+
 {{$treinos}}
