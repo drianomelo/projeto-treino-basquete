@@ -126,7 +126,38 @@ class PessoaController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $pessoa = $this->pessoas->find($id);
+        $pessoa->update([
+            'nome' => $request->nome,
+            'posicao' => $request->posicao,
+            'atributo_id' => $this->atributos->find($pessoa->atributo->id)->update([ //Chave estrangeira na tabela principal
+                'altura' => $request->altura,
+                'peso' => $request->peso,
+                'idade' => $request->idade,
+                'nivel_de_experiencia' => $request->nivel_de_experiencia,
+                'telefone' => $request->telefone,
+            ])->id,
+        ]);
+
+        // if (isset($treinos)) {
+        //     $modalidades_id = $request->modalidade;
+        //     foreach ($modalidades_id as $modalidade_id) {
+        //         Modalidade::where($modalidade_id, 'id')->first()->update([
+        //             'pessoa_id' => $pessoa->id,
+        //         ]);
+        //     }
+        // }
+
+        //Muitos para muitos
+        $treinos_id = $request->treino;
+
+        if(isset($treinos_id)) {
+            foreach($treinos_id as $treino_id) {
+                $pessoa->treino()->attach($treino_id);
+            }
+        }
+
+        return redirect()->route('pessoas.index');
     }
 
     /**
