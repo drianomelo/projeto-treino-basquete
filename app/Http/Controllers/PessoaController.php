@@ -111,7 +111,10 @@ class PessoaController extends Controller
      */
     public function edit($id)
     {
-        //
+        $pessoa = $this->pessoas->find($id);
+        $treinos = $this->treinos;
+
+        return view('pessoas.form', compact('pessoa', 'treinos'));
     }
 
     /**
