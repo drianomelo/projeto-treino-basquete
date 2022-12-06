@@ -25,3 +25,5 @@ Route::get('/create', [PessoaController::class, 'create'])->name('pessoas.create
 Route::post('/store', [PessoaController::class, 'store'])->name('pessoas.store');
 
 Route::get('/show/{id}', [PessoaController::class, 'show'])->name('pessoas.show');
+
+Route::get('/edit/{id}', [PessoaController::class, 'edit'])->name('pessoas.edit');
