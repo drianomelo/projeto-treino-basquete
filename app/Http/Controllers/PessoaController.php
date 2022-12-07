@@ -161,7 +161,7 @@ class PessoaController extends Controller
      */
     public function destroy($id)
     {
-        $pessoas = $this->pessoas - find($id)->delete();
+        $pessoas = $this->pessoas->find($id)->delete();
 
         return redirect()->route('pessoas.index');
     }
