@@ -139,17 +139,10 @@ class PessoaController extends Controller
             ])->id,
         ]);
 
-        // if (isset($treinos)) {
-        //     $modalidades_id = $request->modalidade;
-        //     foreach ($modalidades_id as $modalidade_id) {
-        //         Modalidade::where($modalidade_id, 'id')->first()->update([
-        //             'pessoa_id' => $pessoa->id,
-        //         ]);
-        //     }
-        // }
-
         //Muitos para muitos
         $treinos_id = $request->treino;
+
+        $pessoa->treino()->sync(null);
 
         if(isset($treinos_id)) {
             foreach($treinos_id as $treino_id) {
@@ -157,7 +150,7 @@ class PessoaController extends Controller
             }
         }
 
-        return redirect()->route('pessoas.index');
+        return redirect()->route('pessoas.show', $pessoa->id);
     }
 
     /**
@@ -168,6 +161,8 @@ class PessoaController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $pessoas = $this->pessoas - find($id)->delete();
+
+        return redirect()->route('pessoas.index');
     }
 }
