@@ -19,7 +19,10 @@ class Pessoa extends Model
      * @var array
      */
     protected $hidden = [
-
+        'atributoRelationship',
+        'treinoRelationship',
+        'created_at',
+        'updated_at',
     ];
 
     /**
@@ -28,7 +31,8 @@ class Pessoa extends Model
      * @var array
      */
     protected $appends = [
-
+        'atributo',
+        'treino',
     ];
 
     //MÉTODOS GETTER

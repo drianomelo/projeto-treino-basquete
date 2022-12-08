@@ -22,6 +22,10 @@ class PessoaHasTreinoSeeder extends Seeder
             'treino_id' => 3,
             'pessoa_id' => 2,
         ]);
+        DB::table('pessoas_has_treinos')->insert([
+            'treino_id' => 2,
+            'pessoa_id' => 3,
+        ]);
 
     }
 }
