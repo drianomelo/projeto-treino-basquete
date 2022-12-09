@@ -8,35 +8,33 @@
 </head>
 
 <body>
-    <main class="main">
-        <table class="table">
-            <thead>
-                <h1>Lista de pessoas</h1>
-                <a href="{{ route('pessoas.create') }}">Entrar</a>
+    <table class="table">
+        <thead>
+            <h1>Lista de pessoas</h1>
+            <a href="{{ route('pessoas.create') }}">Entrar</a>
+            <tr>
+                <th scope="col">Nome</th>
+                <th scope="col">Posição</th>
+                <th scope="col">Altura</th>
+                <th scope="col">Peso</th>
+                <th scope="col">Ações</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach ($pessoas as $pessoa)
                 <tr>
-                    <th scope="col">Nome</th>
-                    <th scope="col">Posição</th>
-                    <th scope="col">Altura</th>
-                    <th scope="col">Peso</th>
-                    <th scope="col">Ações</th>
+                    <td>{{ $pessoa->nome }}</td>
+                    <td>{{ $pessoa->posicao }}</td>
+                    <td>{{ $pessoa->atributo->altura }}</td>
+                    <td>{{ $pessoa->atributo->peso }}</td>
+                    <td>
+                        <a href="{{ route('pessoas.edit', $pessoa->id) }}">Editar</a>
+                        <a href="{{ route('pessoas.show', $pessoa->id) }}">Visualizar</a>
+                    </td>
                 </tr>
-            </thead>
-            <tbody>
-                @foreach ($pessoas as $pessoa)
-                    <tr>
-                        <td>{{ $pessoa->nome }}</td>
-                        <td>{{ $pessoa->posicao }}</td>
-                        <td>{{ $pessoa->atributo->altura }}</td>
-                        <td>{{ $pessoa->atributo->peso }}</td>
-                        <td>
-                            <a href="{{ route('pessoas.edit', $pessoa->id) }}">Editar</a>
-                            <a href="{{ route('pessoas.show', $pessoa->id) }}">Visualizar</a>
-                        </td>
-                    </tr>
-                @endforeach
-            </tbody>
-        </table>
-    </main>
+            @endforeach
+        </tbody>
+    </table>
 </body>
 
 </html>
