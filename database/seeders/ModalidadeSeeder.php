@@ -20,5 +20,8 @@ class ModalidadeSeeder extends Seeder
         DB::table('modalidades')->insert([
             'nome' => "Vôlei",
         ]);
+        DB::table('modalidades')->insert([
+            'nome' => "Handebol",
+        ]);
     }
 }
