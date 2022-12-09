@@ -13,25 +13,24 @@
 
 <body>
     @csrf
-    <label for="nome" class="form-check-label">
-        Nome:
-        <input type="text" name="nome" id="nome" value="{{ $pessoa->nome ?? null }}"
-            placeholder="Somente letras">
-    </label>
-
     {!! Form::label('nome', 'Nome:', ['class' => 'form-check-label']) !!}
     {!! Form::text('nome', isset($pessoa) ? $pessoa->nome : null, [
         'class' => 'form-control',
         'placeholder' => 'Somente Letras',
         $form ?? null,
     ]) !!}
+
+    {!! Form::label('nivel_de_experiencia', 'Nivel de experiência:', ['class' => 'form-check-label']) !!}
+    {!! Form::select('nivel_de_experiencia', ['Iniciante', 'Intermediário', 'Avançado']) !!}
+
 </body>
 
 </html>
 
-{{-- @if (isset($pessoa)){
-    {{$pessoa}}
-}
+{{-- @if (isset($pessoa))
+    {
+    {{ $pessoa }}
+    }
 @endif
 
-{{$treinos}} --}}
+{{ $treinos }} --}}
