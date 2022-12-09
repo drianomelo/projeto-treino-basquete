@@ -14,11 +14,11 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// Route::get('/', function () {
+//     return view('welcome');
+// });
 
-Route::get('/index', [PessoaController::class, 'index'])->name('pessoas.index');
+Route::get('/', [PessoaController::class, 'index'])->name('pessoas.index');
 
 Route::get('/create', [PessoaController::class, 'create'])->name('pessoas.create');
 
