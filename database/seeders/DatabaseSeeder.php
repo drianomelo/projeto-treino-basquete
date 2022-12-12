@@ -21,7 +21,6 @@ class DatabaseSeeder extends Seeder
                 PessoaHasTreinoSeeder::class,
                 PessoaSeeder::class,
                 TreinoSeeder::class,
-                PosicaoSeeder::class,
             )
         );
 

@@ -24,7 +24,7 @@
             @foreach ($pessoas as $pessoa)
                 <tr>
                     <td>{{ $pessoa->nome }}</td>
-                    <td>{{ $pessoa->posicao->nome }}</td>
+                    <td>{{ $pessoa->posicao }}</td>
                     <td>{{ $pessoa->atributo->altura }}</td>
                     <td>{{ $pessoa->atributo->peso }}</td>
                     <td>

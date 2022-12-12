@@ -22,7 +22,6 @@ class PessoaController extends Controller
     {
         $this->pessoas = $pessoas;
         $this->atributos = new Atributo;
-        $this->posicaos = new Posicao;
         $this->treinos = Treino::all()->pluck('endereco', 'id');
     }
 
@@ -60,9 +59,6 @@ class PessoaController extends Controller
     {
         $pessoa = $this->pessoas->create([
             'nome' => $request->nome,
-            'posicao_id' => $this->posicaos->create([
-                'nome' => $request->nome,
-            ])->id,
             'atributo_id' => $this->atributos->create([
                 //Chave estrangeira na tabela principal
                 'altura' => $request->altura,
@@ -73,7 +69,7 @@ class PessoaController extends Controller
             ])->id,
         ]);
 
-        // if (isset($treinos)) {
+        // if (isset($pessoas)) {
         //     $modalidades_id = $request->modalidade;
         //     foreach ($modalidades_id as $modalidade_id) {
         //         Modalidade::where($modalidade_id, 'id')->first()->update([
@@ -136,9 +132,6 @@ class PessoaController extends Controller
         $pessoa = $this->pessoas->find($id);
         $pessoa->update([
             'nome' => $request->nome,
-            'posicao_id' => $this->posicaos->find($pessoa->posicao->id)->update([
-                'nome' => $request->nome,
-            ])->id,
             'atributo_id' => $this->atributos->find($pessoa->atributo->id)->update([
                 //Chave estrangeira na tabela principal
                 'altura' => $request->altura,

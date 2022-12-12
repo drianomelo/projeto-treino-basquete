@@ -62,7 +62,8 @@
     {!! Form::select('posicao', ['PG', 'SG', 'SF', 'PF', 'C']) !!}
 
     {{-- @foreach ($posicaos as $posicao)
-        {!! Form::checkbox("posicao$loop->iteration", $loop->iteration, false, [
+        {!! Form::label("posicao$loop->iteration", $posicao, ['class ' => 'labelmargem']) !!}
+        {!! Form::checkbox('posicao[]', $loop->iteration, false, [
             'id' => "posicao$loop->iteration",
             isset($form) ? $form : null,
         ]) !!}
@@ -75,6 +76,7 @@
 </body>
 
 </html>
+
 
 {{-- @if (isset($pessoa))
     {

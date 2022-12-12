@@ -35,7 +35,6 @@ class Pessoa extends Model
     protected $appends = [
         'atributo',
         'treino',
-        'posicao',
     ];
 
     //MÉTODOS GETTER
@@ -48,10 +47,6 @@ class Pessoa extends Model
     public function getTreinoAttribute()
     {
         return $this->treinoRelationship;
-    }
-    public function getPosicaoAttribute()
-    {
-        return $this->posicaoRelationship;
     }
 
     //MÉTODOS SETTER
@@ -68,12 +63,7 @@ class Pessoa extends Model
             $this->attributes['atributo_id'] = Atributo::where('id', $value)->first()->id;
         }
     }
-    public function setPosicaoAttribute($value)
-    {
-        if (isset($value)) {
-            $this->attributes['posicao_id'] = Posicao::where('id', $value)->first()->id;
-        }
-    }
+
     /**
      * Set the treino attribute.
      *
@@ -101,10 +91,5 @@ class Pessoa extends Model
     public function treinoRelationship()
     {
         return $this->belongsToMany(Treino::class, 'pessoas_has_treinos', 'pessoa_id', 'treino_id'); //Relacionamento muitos para muitos;
-    }
-
-    public function posicaoRelationship()
-    {
-        return $this->belongsTo(Posicao::class, 'posicao_id');
     }
 }
