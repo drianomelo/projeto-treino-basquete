@@ -14,13 +14,16 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        $this->call(array(
-            AtributoSeeder::class,
-            ModalidadeSeeder::class,
-            PessoaHasTreinoSeeder::class,
-            PessoaSeeder::class,
-            TreinoSeeder::class,
-        ));
+        $this->call(
+            array(
+                AtributoSeeder::class,
+                ModalidadeSeeder::class,
+                PessoaHasTreinoSeeder::class,
+                PessoaSeeder::class,
+                TreinoSeeder::class,
+                PosicaoSeeder::class,
+            )
+        );
 
 
     }
