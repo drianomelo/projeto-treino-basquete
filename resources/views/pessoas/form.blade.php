@@ -20,8 +20,48 @@
         $form ?? null,
     ]) !!}
 
+    {!! Form::label('altura', 'Altura:', ['class' => 'form-check-label']) !!}
+    {!! Form::text('altura', isset($pessoa) ? $pessoa->atributo->altura : null, [
+        'class' => 'form-control',
+        'placeholder' => 'Somente números',
+        $form ?? null,
+    ]) !!}
+
+    {!! Form::label('idade', 'Idade:', ['class' => 'form-check-label']) !!}
+    {!! Form::text('idade', isset($pessoa) ? $pessoa->atributo->idade : null, [
+        'class' => 'form-control',
+        'placeholder' => 'Somente números',
+        $form ?? null,
+    ]) !!}
+
+    {!! Form::label('telefone', 'Telefone:', ['class' => 'form-check-label']) !!}
+    {!! Form::text('telefone', isset($pessoa) ? $pessoa->atributo->telefone : null, [
+        'class' => 'form-control',
+        'placeholder' => 'Somente números',
+        $form ?? null,
+    ]) !!}
+
     {!! Form::label('nivel_de_experiencia', 'Nivel de experiência:', ['class' => 'form-check-label']) !!}
-    {!! Form::select('nivel_de_experiencia', ['Iniciante', 'Intermediário', 'Avançado']) !!}
+    {!! Form::select(
+        'nivel_de_experiencia',
+        ['Iniciante', 'Intermediário', 'Avançado'],
+        [
+            'class' => 'form-control',
+            'placeholder' => 'Somente números',
+            $form ?? null,
+        ],
+    ) !!}
+
+    {!! Form::label('posicao', 'Posicao:', ['class' => 'form-check-label']) !!}
+    {!! Form::select(
+        'posicao',
+        ['PG', 'SG', 'SF', 'PF', 'C'],
+        [
+            'class' => 'form-control',
+            'placeholder' => 'Somente números',
+            $form ?? null,
+        ],
+    ) !!}
 
 </body>
 
