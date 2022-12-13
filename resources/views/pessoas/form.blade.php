@@ -83,6 +83,12 @@
 
     {!! Form::close() !!}
 
+    @if (isset($pessoa))
+        {!! Form::open(['route' => ['pessoas.destroy', $pessoa->id], 'method' => 'DELETE', 'name' => 'form']) !!}
+        {!! Form::submit('Excluir', ['class' => 'btn btn-danger', $form ?? null]) !!}
+        {!! Form::close() !!}
+    @endif
+
 </body>
 
 </html>
