@@ -69,6 +69,15 @@
         $form ?? null,
     ]) !!}
 
+    @foreach ($treinos as $treino)
+        {!! Form::label('treino[]', $treino, ['class' => 'labelmargem']) !!}
+        {!! Form::checkbox(
+            'treino[]',
+            $loop->iteration,
+            isset($pessoa) ? $pessoa->treino->find($loop->iteration) !== null : null,
+            ['id' => "treino$loop->iteration", isset($form) ? $form : null],
+        ) !!}
+    @endforeach
 
     {!! Form::submit('Salvar', ['class' => 'btn btn-sucess'], $form ?? null) !!}
 
@@ -77,12 +86,3 @@
 </body>
 
 </html>
-
-
-{{-- @if (isset($pessoa))
-    {
-    {{ $pessoa }}
-    }
-@endif
-
-{{ $treinos }} --}}

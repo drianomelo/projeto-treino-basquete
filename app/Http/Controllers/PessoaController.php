@@ -63,8 +63,8 @@ class PessoaController extends Controller
     {
         $pessoa = $this->pessoas->create([
             'nome' => $request->nome,
-            'posicao' => $request->posicao,
-            'nivel' => $request->nivel,
+            'posicao' => $this->posicaos[$request->posicao],
+            'nivel' => $this->nivels[$request->nivel],
             'atributo_id' => $this->atributos->create([
                 //Chave estrangeira na tabela principal
                 'altura' => $request->altura,
@@ -88,7 +88,7 @@ class PessoaController extends Controller
 
         if (isset($treinos_id)) {
             foreach ($treinos_id as $treino_id) {
-                $pessoa->treino()->attach($treino_id);
+                $pessoa->treinoRelationship()->attach($treino_id);
             }
         }
 
@@ -141,9 +141,9 @@ class PessoaController extends Controller
         $pessoa = $this->pessoas->find($id);
         $pessoa->update([
             'nome' => $request->nome,
-            'posicao' => $request->posicao,
-            'nivel' => $request->nivel,
-            'atributo_id' => $this->atributos->find($pessoa->atributo->id)->update([
+            'posicao' => $this->posicaos[$request->posicao],
+            'nivel' => $this->nivels[$request->nivel],
+            'atributo_id' => tap($this->atributos->find($pessoa->atributo->id))->update([
                 //Chave estrangeira na tabela principal
                 'altura' => $request->altura,
                 'peso' => $request->peso,
@@ -155,11 +155,11 @@ class PessoaController extends Controller
         //Muitos para muitos
         $treinos_id = $request->treino;
 
-        $pessoa->treino()->sync(null);
+        $pessoa->treinoRelationship()->sync(null);
 
         if (isset($treinos_id)) {
             foreach ($treinos_id as $treino_id) {
-                $pessoa->treino()->attach($treino_id);
+                $pessoa->treinoRelationship()->attach($treino_id);
             }
         }
 
