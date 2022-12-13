@@ -21,6 +21,8 @@ class PessoaController extends Controller
     public function __construct(Pessoa $pessoas)
     {
         $this->pessoas = $pessoas;
+        $this->posicaos = ['PG', 'SG', 'SF', 'PF', 'C'];
+        $this->nivels = ['Iniciante', 'Intermediário', 'Avançado'];
         $this->atributos = new Atributo;
         $this->treinos = Treino::all()->pluck('endereco', 'id');
     }
@@ -44,9 +46,11 @@ class PessoaController extends Controller
      */
     public function create()
     {
+        $posicaos = $this->posicaos;
+        $nivels = $this->nivels;
         $treinos = $this->treinos;
 
-        return view('pessoas.form', compact('treinos'));
+        return view('pessoas.form', compact('treinos', 'posicaos', 'nivels'));
     }
 
     /**
@@ -59,12 +63,13 @@ class PessoaController extends Controller
     {
         $pessoa = $this->pessoas->create([
             'nome' => $request->nome,
+            'posicao' => $request->posicao,
+            'nivel' => $request->nivel,
             'atributo_id' => $this->atributos->create([
                 //Chave estrangeira na tabela principal
                 'altura' => $request->altura,
                 'peso' => $request->peso,
                 'idade' => $request->idade,
-                'nivel_de_experiencia' => $request->nivel_de_experiencia,
                 'telefone' => $request->telefone,
             ])->id,
         ]);
@@ -102,8 +107,10 @@ class PessoaController extends Controller
 
         $pessoa = $this->pessoas->find($id);
         $treinos = $this->treinos;
+        $nivels = $this->nivels;
+        $posicaos = $this->posicaos;
 
-        return view('pessoas.form', compact('pessoa', 'treinos', 'form'));
+        return view('pessoas.form', compact('pessoa', 'treinos', 'form', 'nivels', 'posicaos'));
     }
 
     /**
@@ -116,8 +123,10 @@ class PessoaController extends Controller
     {
         $pessoa = $this->pessoas->find($id);
         $treinos = $this->treinos;
+        $nivels = $this->nivels;
+        $posicaos = $this->posicaos;
 
-        return view('pessoas.form', compact('pessoa', 'treinos'));
+        return view('pessoas.form', compact('pessoa', 'treinos', 'nivels', 'posicaos'));
     }
 
     /**
@@ -132,12 +141,13 @@ class PessoaController extends Controller
         $pessoa = $this->pessoas->find($id);
         $pessoa->update([
             'nome' => $request->nome,
+            'posicao' => $request->posicao,
+            'nivel' => $request->nivel,
             'atributo_id' => $this->atributos->find($pessoa->atributo->id)->update([
                 //Chave estrangeira na tabela principal
                 'altura' => $request->altura,
                 'peso' => $request->peso,
                 'idade' => $request->idade,
-                'nivel_de_experiencia' => $request->nivel_de_experiencia,
                 'telefone' => $request->telefone,
             ])->id,
         ]);

@@ -17,16 +17,19 @@ class PessoaSeeder extends Seeder
         DB::table('pessoas')->insert([
             'nome' => "Adriano Melo",
             'posicao' => "SG",
+            'nivel' => "Iniciante",
             'atributo_id' => 1,
         ]);
         DB::table('pessoas')->insert([
             'nome' => "Rodrygo Santos",
             'posicao' => "C",
+            'nivel' => "Intermediário",
             'atributo_id' => 2,
         ]);
         DB::table('pessoas')->insert([
             'nome' => "Adriel Melo",
             'posicao' => "PG",
+            'nivel' => "Avançado",
             'atributo_id' => 3,
         ]);
     }

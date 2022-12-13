@@ -55,19 +55,20 @@
         $form ?? null,
     ]) !!}
 
-    {!! Form::label('nivel_de_experiencia', 'Nivel de experiência:', ['class' => 'form-check-label']) !!}
-    {!! Form::select('nivel_de_experiencia', ['Iniciante', 'Intermediário', 'Avançado']) !!}
+    {!! Form::label('nivel', 'Nivel de Experiência: ', ['class' => 'form-check-label']) !!}
+    {!! Form::select('nivel', $nivels, isset($pessoa) && $pessoa->nivel !== null ? $pessoa->nivel : null, [
+        'class' => 'form-control',
+        'placeholder' => 'Selecione uma Posição',
+        $form ?? null,
+    ]) !!}
 
-    {!! Form::label('posicao', 'Posicao:', ['class' => 'form-check-label']) !!}
-    {!! Form::select('posicao', ['PG', 'SG', 'SF', 'PF', 'C']) !!}
+    {!! Form::label('posicao', 'Posição: ', ['class' => 'form-check-label']) !!}
+    {!! Form::select('posicao', $posicaos, isset($pessoa) && $pessoa->posicao !== null ? $pessoa->posicao : null, [
+        'class' => 'form-control',
+        'placeholder' => 'Selecione uma Posição',
+        $form ?? null,
+    ]) !!}
 
-    {{-- @foreach ($posicaos as $posicao)
-        {!! Form::label("posicao$loop->iteration", $posicao, ['class ' => 'labelmargem']) !!}
-        {!! Form::checkbox('posicao[]', $loop->iteration, false, [
-            'id' => "posicao$loop->iteration",
-            isset($form) ? $form : null,
-        ]) !!}
-    @endforeach --}}
 
     {!! Form::submit('Salvar', ['class' => 'btn btn-sucess'], $form ?? null) !!}
 

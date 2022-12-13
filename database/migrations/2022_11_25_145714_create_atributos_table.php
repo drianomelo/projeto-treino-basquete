@@ -18,7 +18,6 @@ class CreateAtributosTable extends Migration
             $table->string('altura');
             $table->string('peso');
             $table->string('idade');
-            $table->string('nivel_de_experiencia');
             $table->string('telefone');
             $table->timestamps();
         });
