@@ -16,7 +16,7 @@
             <img src="img/prancheta.png" alt="">
             <a href="{{ route('pessoas.create') }}" class="main__btn">Inscrever-se</a>
             <div class="main__infos">
-                <table>
+                <table class="table">
                     <thead>
                         <tr>
                             <th scope="col">Nome</th>

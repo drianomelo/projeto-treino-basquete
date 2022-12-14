@@ -6,8 +6,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     @if (isset($pessoa))
         <title>Treino - Visualização do treino</title>
+        <link rel="stylesheet" href="{{ asset('css/show.css') }}">
     @else
         <title>Treino - Inscrição no treino</title>
+        <link rel="stylesheet" href="{{ asset('css/create.css') }}">
     @endif
 </head>
 
@@ -68,6 +70,7 @@
         'placeholder' => 'Selecione uma Posição',
         $form ?? null,
     ]) !!}
+
 
     @foreach ($treinos as $treino)
         {!! Form::label('treino[]', $treino, ['class' => 'labelmargem']) !!}

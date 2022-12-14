@@ -49,7 +49,7 @@ class PessoaController extends Controller
     {
         $posicaos = $this->posicaos;
         $nivels = $this->nivels;
-        $treinos = $this->treinos;
+        $treinos = $this->treinos->pluck('endereco', 'id');
 
         return view('pessoas.form', compact('treinos', 'posicaos', 'nivels'));
     }

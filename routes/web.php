@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\PessoaController;
+use App\Http\Controllers\TreinoController;
 use Illuminate\Support\Facades\Route;
 
 /*

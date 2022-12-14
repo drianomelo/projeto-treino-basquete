@@ -27,12 +27,13 @@ body {
 
 .main__card img {
     width: 80%;
+    margin-left: 5rem;
 }
 
 .main__infos {
     position: absolute;
     top: 18%;
-    left: 10%;
+    left: 18%;
 }
 
 .main__infos a {
@@ -46,10 +47,6 @@ body {
     text-transform: uppercase;
 
     padding: 0.3rem;
-}
-
-.coluna {
-    margin-right: 1rem;
 }
 
 td {
@@ -72,6 +69,6 @@ td {
 
     position: absolute;
     bottom: 7%;
-    right: 44%;
+    right: 34%;
     z-index: 20;
 }
