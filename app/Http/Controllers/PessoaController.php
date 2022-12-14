@@ -24,7 +24,7 @@ class PessoaController extends Controller
         $this->posicaos = ['PG', 'SG', 'SF', 'PF', 'C'];
         $this->nivels = ['Iniciante', 'Intermediário', 'Avançado'];
         $this->atributos = new Atributo;
-        $this->treinos = Treino::all()->pluck('endereco', 'id');
+        $this->treinos = Treino::all();
     }
 
     /**
@@ -35,8 +35,9 @@ class PessoaController extends Controller
     public function index()
     {
         $pessoas = $this->pessoas->all();
+        $treinos = $this->treinos;
 
-        return view('pessoas.index', compact('pessoas'));
+        return view('pessoas.index', compact('pessoas', 'treinos'));
     }
 
     /**

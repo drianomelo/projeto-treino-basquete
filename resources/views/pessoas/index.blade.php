@@ -13,47 +13,14 @@
         <div class="main__flex">
             <h2 class="main__title">Treinos disponíveis</h2>
             <div class="main__cards">
-                @if (isset($pessoa))
-                    @foreach ($treinos as $treino)
-                        <div class="main__card">
-                            <img src="img/prancheta.png" alt="">
-                            <div class="main__infos">
-                                <p class="main__address">Endereço: UFS</p>
-                                <div class="main__time">
-                                    <p>Horário de Início: 15:00</p>
-                                    <p>Horário de Término: 17:00</p>
-                                </div>
-                                <p class="main__level">Nível: Todos</p>
-                                <a href="{{ route('pessoas.show', $pessoa->id) }}">Inscritos</a>
-                            </div>
+                @foreach ($treinos as $treino)
+                    <div class="main__card">
+                        <img src="img/prancheta.png" alt="">
+                        
+                            <a href="{{ route('pessoas.show', $pessoas->id) }}">Inscritos</a>
                         </div>
-                    @endforeach
-                @endif
-                {{-- <div class="main__card">
-                    <img src="img/prancheta.png" alt="">
-                    <div class="main__infos">
-                        <p class="main__address">Endereço: UFS</p>
-                        <div class="main__time">
-                            <p>Horário de Início: 15:00</p>
-                            <p>Horário de Término: 17:00</p>
-                        </div>
-                        <p class="main__level">Nível: Todos</p>
-                        <a href="{{ route('pessoas.show', $pessoa->id) }}">Inscritos</a>
                     </div>
-                </div>
-                <div class="main__card">
-                    <img src="img/prancheta.png" alt="">
-                    <img src="" alt="">
-                    <div class="main__infos">
-                        <p class="main__address">Endereço: UFS</p>
-                        <div class="main__time">
-                            <p>Horário de Início: 15:00</p>
-                            <p>Horário de Término: 17:00</p>
-                        </div>
-                        <p class="main__level">Nível: Todos</p>
-                        <a href="{{ route('pessoas.show', $pessoa->id) }}">Inscritos</a>
-                    </div>
-                </div> --}}
+                @endforeach
             </div>
             <a href="{{ route('pessoas.create') }}" class="main__btn">Inscrever-se</a>
         </div>
