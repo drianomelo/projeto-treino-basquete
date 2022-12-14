@@ -19,11 +19,11 @@
                 <table>
                     <thead>
                         <tr>
-                            <th class="coluna" scope="col">Nome</th>
-                            <th class="coluna" scope="col">Posição</th>
-                            <th class="coluna" scope="col">Altura</th>
-                            <th class="coluna" scope="col">Peso</th>
-                            <th class="coluna" scope="col">Ações</th>
+                            <th scope="col">Nome</th>
+                            <th scope="col">Posição</th>
+                            <th scope="col">Altura</th>
+                            <th scope="col">Peso</th>
+                            <th scope="col">Ações</th>
                         </tr>
                     </thead>
                     <tbody>
