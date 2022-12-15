@@ -46,7 +46,14 @@ body {
     text-decoration: none;
     text-transform: uppercase;
 
-    padding: 0.3rem;
+    padding: 0.4rem;
+    transition: ease 0.5s;
+    margin-right: 0.5rem;
+}
+
+.main__infos a:hover {
+    color: #fff;
+    background-color: #b65510;
 }
 
 td {
@@ -71,4 +78,11 @@ td {
     bottom: 7%;
     right: 34%;
     z-index: 20;
+
+    transition: ease 0.3s;
+}
+
+.main__btn:hover {
+    color: #fff;
+    background-color: #03772a;
 }

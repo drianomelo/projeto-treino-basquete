@@ -107,7 +107,8 @@ class PessoaController extends Controller
         $form = 'disabled';
 
         $pessoa = $this->pessoas->find($id);
-        $treinos = $this->treinos;
+        $treinos = $this->treinos->pluck('endereco', 'id');
+        ;
         $nivels = $this->nivels;
         $posicaos = $this->posicaos;
 
@@ -123,7 +124,8 @@ class PessoaController extends Controller
     public function edit($id)
     {
         $pessoa = $this->pessoas->find($id);
-        $treinos = $this->treinos;
+        $treinos = $this->treinos->pluck('endereco', 'id');
+        ;
         $nivels = $this->nivels;
         $posicaos = $this->posicaos;
 

@@ -187,9 +187,9 @@ h2 {
 
 .main__btn {
     background-color: #fff;
-    border: 3px solid #f58434;
+    border: 3px solid #06a53b;
     border-radius: 10px;
-    color: #f58434;
+    color: #06a53b;
     cursor: pointer;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
     font-weight: 900;
@@ -201,6 +201,36 @@ h2 {
 }
 
 .main__btn:hover {
-    background-color: #f58434;
+    background-color: #06a53b;
     color: #fff;
+}
+
+.main__seta {
+    position: absolute;
+    top: 2%;
+    right: 2%;
+
+    animation: seta-animation 0.4s ease alternate infinite;
+}
+
+.main__seta img {
+    width: 4.5rem;
+}
+
+@keyframes seta-animation {
+    0% {
+        right: 2.2%;
+    }
+    25% {
+        right: 2.4%;
+    }
+    50% {
+        right: 2.6%;
+    }
+    75% {
+        right: 2.8%;
+    }
+    100% {
+        right: 3%;
+    }
 }

@@ -15,7 +15,8 @@
 
 <body>
     <main class="main">
-        <img src="img/prancheta.png" alt="" class="main__img">
+        <a href="{{ route('pessoas.index') }}" class="main__seta"><img src="../img/seta.png" alt=""></a>
+        <img src="../img/prancheta.png" alt="" class="main__img">
 
         <div class="main__form">
             @csrf
@@ -117,15 +118,22 @@
                 @endforeach
             </div>
 
-            {!! Form::submit('Salvar', ['class' => 'main__btn'], $form ?? null) !!}
+            <div class="main__btns">
+                {!! Form::submit('Salvar', ['class' => 'main__btn'], $form ?? null) !!}
 
-            {!! Form::close() !!}
-
-            @if (isset($pessoa))
-                {!! Form::open(['route' => ['pessoas.destroy', $pessoa->id], 'method' => 'DELETE', 'name' => 'form']) !!}
-                {!! Form::submit('Excluir', ['class' => 'btn btn-danger', $form ?? null]) !!}
                 {!! Form::close() !!}
-            @endif
+
+                @if (isset($pessoa))
+                    {!! Form::open([
+                        'route' => ['pessoas.destroy', $pessoa->id],
+                        'method' => 'DELETE',
+                        'name' => 'form',
+                        'class' => 'form-btn',
+                    ]) !!}
+                    {!! Form::submit('Excluir', ['class' => 'main__btn excluir', $form ?? null]) !!}
+                    {!! Form::close() !!}
+                @endif
+            </div>
         </div>
     </main>
 
