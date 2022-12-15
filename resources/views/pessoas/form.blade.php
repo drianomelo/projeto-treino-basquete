@@ -112,7 +112,7 @@
                             'treino[]',
                             $loop->iteration,
                             isset($pessoa) ? $pessoa->treino->find($loop->iteration) !== null : null,
-                            ['class' => 'main__checkbox', 'id' => "treino$loop->iteration", 'required', isset($form) ? $form : null],
+                            ['class' => 'main__checkbox', 'id' => "treino$loop->iteration", isset($form) ? $form : null],
                         ) !!}
                     </div>
                 @endforeach
@@ -120,7 +120,6 @@
 
             <div class="main__btns">
                 {!! Form::submit('Salvar', ['class' => 'main__btn'], $form ?? null) !!}
-
                 {!! Form::close() !!}
 
                 @if (isset($pessoa))
