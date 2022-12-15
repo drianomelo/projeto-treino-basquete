@@ -1,0 +1,206 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Verdana, sans-serif;
+    background-color: #000;
+}
+
+.main {
+    background-image: url(../img/background-pg.png);
+    background-size: cover;
+
+    height: 100vh;
+
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+.main__img {
+    width: 30%;
+    margin-left: 3rem;
+
+    position: relative;
+}
+
+.main__form {
+    position: absolute;
+    top: 21%;
+    left: 5.5%;
+
+    width: 24%;
+
+    text-align: center;
+}
+
+.main__form-text {
+    margin-bottom: 2rem;
+    position: relative;
+}
+
+.main__form-text-t {
+    margin-bottom: 0.8rem;
+    position: relative;
+}
+
+.main__label {
+    background-color: #fff;
+    color: #f58434;
+    font-weight: 700;
+
+    display: inline-block;
+    padding: 0 0.8rem;
+
+    position: absolute;
+    top: -20%;
+    left: 5%;
+}
+
+.main__input {
+    background-color: #fff;
+    border: 3px solid #f58434;
+    border-radius: 10px;
+
+    width: 100%;
+    padding: 1rem;
+}
+
+.main__input:focus {
+    outline: none;
+}
+
+.main__form-select {
+    display: flex;
+    justify-content: center;
+
+    height: 53px;
+    padding: 0.25rem;
+    margin-bottom: 0.5rem;
+    margin-top: 0;
+
+    background-color: #fff;
+    border: 3px solid #f58434;
+    border-radius: 10px;
+
+    position: relative;
+}
+
+.main__label-select {
+    display: inline-block;
+
+    margin-bottom: 0;
+    margin-top: 0;
+    padding: 0 0.8rem;
+
+    background-color: #fff;
+    color: #f58434;
+    font-weight: 700;
+
+    position: absolute;
+    top: -25%;
+}
+
+.left {
+    left: 5%;
+}
+
+.right {
+    right: 15%;
+}
+
+.main__select {
+    position: absolute;
+    top: 25%;
+    outline: none;
+}
+
+.select-left {
+    left: 13%;
+}
+
+.select-right {
+    right: 11%;
+}
+
+.div-select {
+    width: 250px;
+    overflow: hidden;
+}
+
+.div-select select {
+    background: url(http://www.webcis.com.br/images/imagens-noticias/select/ico-seta-select.gif)
+        no-repeat #f58434;
+    border: 3px solid #b65510;
+    border-radius: 10px;
+
+    width: 30%;
+    height: 30px;
+    padding-left: 5px;
+
+    font-family: Verdana, sans-serif;
+    font-size: 0.8rem;
+    font-weight: 700;
+
+    color: #fff;
+    text-indent: 0.01px;
+    text-overflow: "";
+}
+
+.div-select select::-ms-expand {
+    display: none;
+}
+
+h2 {
+    padding: 0 0 0.5rem 0;
+    margin-bottom: 1.5rem;
+    border-bottom: 1px solid #000;
+}
+
+.main__title {
+    margin-bottom: 1rem;
+}
+
+.main__title-treino {
+    margin-bottom: 0.5rem;
+}
+
+.main__checkbox-flex {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+
+    margin-bottom: 0.6rem;
+}
+
+.main__label-checkbox {
+    color: #f58434;
+    font-weight: 900;
+}
+
+.main__checkbox {
+    cursor: pointer;
+}
+
+.main__btn {
+    background-color: #fff;
+    border: 3px solid #f58434;
+    border-radius: 10px;
+    color: #f58434;
+    cursor: pointer;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-weight: 900;
+
+    width: 30%;
+    padding: 0.5rem;
+
+    transition: ease 0.5s;
+}
+
+.main__btn:hover {
+    background-color: #f58434;
+    color: #fff;
+}

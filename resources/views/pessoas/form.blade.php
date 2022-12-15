@@ -14,83 +14,120 @@
 </head>
 
 <body>
-    @csrf
+    <main class="main">
+        <img src="img/prancheta.png" alt="" class="main__img">
 
-    @if (isset($pessoa))
-        {!! Form::open(['route' => ['pessoas.update', $pessoa->id], 'method' => 'PUT', 'name' => 'form']) !!}
-    @else
-        {!! Form::open(['route' => 'pessoas.store', 'method' => 'POST', 'name' => 'form']) !!}
-    @endif
+        <div class="main__form">
+            @csrf
 
-    {!! Form::label('nome', 'Nome:', ['class' => 'form-check-label']) !!}
-    {!! Form::text('nome', isset($pessoa) ? $pessoa->nome : null, [
-        'class' => 'form-control',
-        'placeholder' => 'Somente Letras',
-        $form ?? null,
-    ]) !!}
+            @if (isset($pessoa))
+                {!! Form::open(['route' => ['pessoas.update', $pessoa->id], 'method' => 'PUT', 'name' => 'form']) !!}
+            @else
+                {!! Form::open(['route' => 'pessoas.store', 'method' => 'POST', 'name' => 'form']) !!}
+            @endif
 
-    {!! Form::label('altura', 'Altura:', ['class' => 'form-check-label']) !!}
-    {!! Form::text('altura', isset($pessoa) ? $pessoa->atributo->altura : null, [
-        'class' => 'form-control',
-        'placeholder' => 'Somente números',
-        $form ?? null,
-    ]) !!}
+            <h2>Dados pessoais</h2>
+            <div class="main__form-text">
+                {!! Form::label('nome', 'Nome:', ['class' => 'main__label']) !!}
+                {!! Form::text('nome', isset($pessoa) ? $pessoa->nome : null, [
+                    'class' => 'main__input',
+                    'placeholder' => 'Somente Letras',
+                    'required',
+                    $form ?? null,
+                ]) !!}
+            </div>
 
-    {!! Form::label('peso', 'Peso:', ['class' => 'form-check-label']) !!}
-    {!! Form::text('peso', isset($pessoa) ? $pessoa->atributo->peso : null, [
-        'class' => 'form-control',
-        'placeholder' => 'Somente números',
-        $form ?? null,
-    ]) !!}
+            <div class="main__form-text">
+                {!! Form::label('altura', 'Altura:', ['class' => 'main__label']) !!}
+                {!! Form::text('altura', isset($pessoa) ? $pessoa->atributo->altura : null, [
+                    'class' => 'main__input',
+                    'placeholder' => 'Somente números',
+                    'required',
+                    $form ?? null,
+                ]) !!}
+            </div>
 
-    {!! Form::label('idade', 'Idade:', ['class' => 'form-check-label']) !!}
-    {!! Form::text('idade', isset($pessoa) ? $pessoa->atributo->idade : null, [
-        'class' => 'form-control',
-        'placeholder' => 'Somente números',
-        $form ?? null,
-    ]) !!}
+            <div class="main__form-text">
+                {!! Form::label('peso', 'Peso:', ['class' => 'main__label']) !!}
+                {!! Form::text('peso', isset($pessoa) ? $pessoa->atributo->peso : null, [
+                    'class' => 'main__input',
+                    'placeholder' => 'Somente números',
+                    'required',
+                    $form ?? null,
+                ]) !!}
+            </div>
 
-    {!! Form::label('telefone', 'Telefone:', ['class' => 'form-check-label']) !!}
-    {!! Form::text('telefone', isset($pessoa) ? $pessoa->atributo->telefone : null, [
-        'class' => 'form-control',
-        'placeholder' => 'Somente números',
-        $form ?? null,
-    ]) !!}
+            <div class="main__form-text">
+                {!! Form::label('idade', 'Idade:', ['class' => 'main__label']) !!}
+                {!! Form::text('idade', isset($pessoa) ? $pessoa->atributo->idade : null, [
+                    'class' => 'main__input',
+                    'placeholder' => 'Somente números',
+                    'required',
+                    $form ?? null,
+                ]) !!}
+            </div>
 
-    {!! Form::label('nivel', 'Nivel de Experiência: ', ['class' => 'form-check-label']) !!}
-    {!! Form::select('nivel', $nivels, isset($pessoa) && $pessoa->nivel !== null ? $pessoa->nivel : null, [
-        'class' => 'form-control',
-        'placeholder' => 'Selecione uma Posição',
-        $form ?? null,
-    ]) !!}
+            <div class="main__form-text-t">
+                {!! Form::label('telefone', 'Telefone:', ['class' => 'main__label']) !!}
+                {!! Form::text('telefone', isset($pessoa) ? $pessoa->atributo->telefone : null, [
+                    'class' => 'main__input',
+                    'placeholder' => 'Somente números',
+                    'required',
+                    $form ?? null,
+                ]) !!}
+            </div>
 
-    {!! Form::label('posicao', 'Posição: ', ['class' => 'form-check-label']) !!}
-    {!! Form::select('posicao', $posicaos, isset($pessoa) && $pessoa->posicao !== null ? $pessoa->posicao : null, [
-        'class' => 'form-control',
-        'placeholder' => 'Selecione uma Posição',
-        $form ?? null,
-    ]) !!}
+            <h2 class="main__title">Dados do treino</h2>
+            <div class="main__form-select">
+                <div>
+                    {!! Form::label('nivel', 'Nivel de Experiência: ', ['class' => 'main__label-select left']) !!}
+                    <div class="div-select">
+                        {!! Form::select('nivel', $nivels, isset($pessoa) && $pessoa->nivel !== null ? $pessoa->nivel : null, [
+                            'class' => 'main__select select-left',
+                            'required',
+                            $form ?? null,
+                        ]) !!}
+                    </div>
+                </div>
 
+                <div>
+                    {!! Form::label('posicao', 'Posição: ', ['class' => 'main__label-select right']) !!}
+                    <div class="div-select">
+                        {!! Form::select('posicao', $posicaos, isset($pessoa) && $pessoa->posicao !== null ? $pessoa->posicao : null, [
+                            'class' => 'main__select select-right',
+                            'required',
+                            $form ?? null,
+                        ]) !!}
+                    </div>
+                </div>
+            </div>
 
-    @foreach ($treinos as $treino)
-        {!! Form::label('treino[]', $treino, ['class' => 'labelmargem']) !!}
-        {!! Form::checkbox(
-            'treino[]',
-            $loop->iteration,
-            isset($pessoa) ? $pessoa->treino->find($loop->iteration) !== null : null,
-            ['id' => "treino$loop->iteration", isset($form) ? $form : null],
-        ) !!}
-    @endforeach
+            <h2 class="main__title-treino">Treinos</h2>
+            <div class="main__checkbox-flex">
+                @foreach ($treinos as $treino)
+                    <div>
+                        {!! Form::label('treino[]', $treino, ['class' => 'main__label-checkbox']) !!}
+                        {!! Form::checkbox(
+                            'treino[]',
+                            $loop->iteration,
+                            isset($pessoa) ? $pessoa->treino->find($loop->iteration) !== null : null,
+                            ['class' => 'main__checkbox', 'id' => "treino$loop->iteration", 'required', isset($form) ? $form : null],
+                        ) !!}
+                    </div>
+                @endforeach
+            </div>
 
-    {!! Form::submit('Salvar', ['class' => 'btn btn-sucess'], $form ?? null) !!}
+            {!! Form::submit('Salvar', ['class' => 'main__btn'], $form ?? null) !!}
 
-    {!! Form::close() !!}
+            {!! Form::close() !!}
 
-    @if (isset($pessoa))
-        {!! Form::open(['route' => ['pessoas.destroy', $pessoa->id], 'method' => 'DELETE', 'name' => 'form']) !!}
-        {!! Form::submit('Excluir', ['class' => 'btn btn-danger', $form ?? null]) !!}
-        {!! Form::close() !!}
-    @endif
+            @if (isset($pessoa))
+                {!! Form::open(['route' => ['pessoas.destroy', $pessoa->id], 'method' => 'DELETE', 'name' => 'form']) !!}
+                {!! Form::submit('Excluir', ['class' => 'btn btn-danger', $form ?? null]) !!}
+                {!! Form::close() !!}
+            @endif
+        </div>
+    </main>
 
 </body>
 
