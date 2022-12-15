@@ -24,12 +24,12 @@ class TreinoSeeder extends Seeder
             'horario_inicio' => "21:00",
             'horario_fim' => "23:00",
             'endereco' => "UNIT",
-            'modalidade_id' => 1,
+            'modalidade_id' => 3,
         ]);
         DB::table('treinos')->insert([
             'horario_inicio' => "19:00",
             'horario_fim' => "20:00",
-            'endereco' => "UFS",
+            'endereco' => "Codap",
             'modalidade_id' => 2,
         ]);
     }

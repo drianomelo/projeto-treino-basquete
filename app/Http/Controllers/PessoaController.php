@@ -7,6 +7,8 @@ use App\Models\Pessoa;
 use App\Models\Atributo;
 use App\Models\Treino;
 use App\Models\Modalidade;
+use App\Models\Posicao;
+
 
 class PessoaController extends Controller
 {
@@ -16,10 +18,13 @@ class PessoaController extends Controller
      * @param \App\Models\Pessoa $pessoas
      * @return void
      */
-    public function __construct(Pessoa $pessoas){
+    public function __construct(Pessoa $pessoas)
+    {
         $this->pessoas = $pessoas;
+        $this->posicaos = ['PG', 'SG', 'SF', 'PF', 'C'];
+        $this->nivels = ['Iniciante', 'Intermediário', 'Avançado'];
         $this->atributos = new Atributo;
-        $this->treinos = Treino::all()->pluck('endereco', 'id');
+        $this->treinos = Treino::all();
     }
 
     /**
@@ -30,8 +35,9 @@ class PessoaController extends Controller
     public function index()
     {
         $pessoas = $this->pessoas->all();
+        $treinos = $this->treinos;
 
-        return view('pessoas.index', compact('pessoas'));
+        return view('pessoas.index', compact('pessoas', 'treinos'));
     }
 
     /**
@@ -41,9 +47,11 @@ class PessoaController extends Controller
      */
     public function create()
     {
-        $treinos = $this->treinos;
+        $posicaos = $this->posicaos;
+        $nivels = $this->nivels;
+        $treinos = $this->treinos->pluck('endereco', 'id');
 
-        return view('pessoas.form', compact('treinos'));
+        return view('pessoas.form', compact('treinos', 'posicaos', 'nivels'));
     }
 
     /**
@@ -56,17 +64,18 @@ class PessoaController extends Controller
     {
         $pessoa = $this->pessoas->create([
             'nome' => $request->nome,
-            'posicao' => $request->posicao,
-            'atributo_id' => $this->atributos->create([ //Chave estrangeira na tabela principal
+            'posicao' => $this->posicaos[$request->posicao],
+            'nivel' => $this->nivels[$request->nivel],
+            'atributo_id' => $this->atributos->create([
+                //Chave estrangeira na tabela principal
                 'altura' => $request->altura,
                 'peso' => $request->peso,
                 'idade' => $request->idade,
-                'nivel_de_experiencia' => $request->nivel_de_experiencia,
                 'telefone' => $request->telefone,
             ])->id,
         ]);
 
-        // if (isset($treinos)) {
+        // if (isset($pessoas)) {
         //     $modalidades_id = $request->modalidade;
         //     foreach ($modalidades_id as $modalidade_id) {
         //         Modalidade::where($modalidade_id, 'id')->first()->update([
@@ -78,9 +87,9 @@ class PessoaController extends Controller
         //Muitos para muitos
         $treinos_id = $request->treino;
 
-        if(isset($treinos_id)) {
-            foreach($treinos_id as $treino_id) {
-                $pessoa->treino()->attach($treino_id);
+        if (isset($treinos_id)) {
+            foreach ($treinos_id as $treino_id) {
+                $pessoa->treinoRelationship()->attach($treino_id);
             }
         }
 
@@ -98,9 +107,12 @@ class PessoaController extends Controller
         $form = 'disabled';
 
         $pessoa = $this->pessoas->find($id);
-        $treinos = $this->treinos;
+        $treinos = $this->treinos->pluck('endereco', 'id');
+        ;
+        $nivels = $this->nivels;
+        $posicaos = $this->posicaos;
 
-        return view('pessoas.form', compact('pessoa', 'treinos', 'form'));
+        return view('pessoas.form', compact('pessoa', 'treinos', 'form', 'nivels', 'posicaos'));
     }
 
     /**
@@ -112,9 +124,12 @@ class PessoaController extends Controller
     public function edit($id)
     {
         $pessoa = $this->pessoas->find($id);
-        $treinos = $this->treinos;
+        $treinos = $this->treinos->pluck('endereco', 'id');
+        ;
+        $nivels = $this->nivels;
+        $posicaos = $this->posicaos;
 
-        return view('pessoas.form', compact('pessoa', 'treinos'));
+        return view('pessoas.form', compact('pessoa', 'treinos', 'nivels', 'posicaos'));
     }
 
     /**
@@ -129,12 +144,13 @@ class PessoaController extends Controller
         $pessoa = $this->pessoas->find($id);
         $pessoa->update([
             'nome' => $request->nome,
-            'posicao' => $request->posicao,
-            'atributo_id' => $this->atributos->find($pessoa->atributo->id)->update([ //Chave estrangeira na tabela principal
+            'posicao' => $this->posicaos[$request->posicao],
+            'nivel' => $this->nivels[$request->nivel],
+            'atributo_id' => tap($this->atributos->find($pessoa->atributo->id))->update([
+                //Chave estrangeira na tabela principal
                 'altura' => $request->altura,
                 'peso' => $request->peso,
                 'idade' => $request->idade,
-                'nivel_de_experiencia' => $request->nivel_de_experiencia,
                 'telefone' => $request->telefone,
             ])->id,
         ]);
@@ -142,11 +158,11 @@ class PessoaController extends Controller
         //Muitos para muitos
         $treinos_id = $request->treino;
 
-        $pessoa->treino()->sync(null);
+        $pessoa->treinoRelationship()->sync(null);
 
-        if(isset($treinos_id)) {
-            foreach($treinos_id as $treino_id) {
-                $pessoa->treino()->attach($treino_id);
+        if (isset($treinos_id)) {
+            foreach ($treinos_id as $treino_id) {
+                $pessoa->treinoRelationship()->attach($treino_id);
             }
         }
 
@@ -161,7 +177,9 @@ class PessoaController extends Controller
      */
     public function destroy($id)
     {
-        $pessoas = $this->pessoas->find($id)->delete();
+        $pessoa = $this->pessoas->find($id);
+        $pessoa->atributo->delete();
+        $pessoa->delete();
 
         return redirect()->route('pessoas.index');
     }

@@ -17,6 +17,7 @@ class CreatePessoasTable extends Migration
             $table->id();
             $table->string('nome');
             $table->string('posicao');
+            $table->string('nivel');
             $table->foreignId('atributo_id')->constrained('atributos');
             $table->timestamps();
         });

@@ -30,4 +30,21 @@ class Treino extends Model
      */
     protected $appends = [
     ];
+
+    public function getModalidadeAttribute()
+    {
+        return $this->modalidadeRelationship;
+    }
+
+    public function setModalidadeAttribute($value)
+    {
+        if (isset($value)) {
+            $this->attributes['modalidade_id'] = Modalidade::where('id', $value)->first()->id;
+        }
+    }
+
+    public function modalidadeRelationship()
+    {
+        return $this->belongsTo(Modalidade::class, 'modalidade_id');
+    }
 }

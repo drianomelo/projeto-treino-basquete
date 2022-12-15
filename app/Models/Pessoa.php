@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Pessoa extends Model
 {
+
     /**
      * The table associated with the model.
      *
@@ -21,6 +22,7 @@ class Pessoa extends Model
     protected $hidden = [
         'atributoRelationship',
         'treinoRelationship',
+        'posicaoRelationship',
         'created_at',
         'updated_at',
     ];
@@ -37,11 +39,13 @@ class Pessoa extends Model
 
     //MÉTODOS GETTER
 
-    public function getAtributoAttribute() {
+    public function getAtributoAttribute()
+    {
         return $this->atributoRelationship;
     }
 
-    public function getTreinoAttribute() {
+    public function getTreinoAttribute()
+    {
         return $this->treinoRelationship;
     }
 
@@ -53,11 +57,13 @@ class Pessoa extends Model
      * @param  int $value
      * @return void
      */
-    public function setATributoAttribute($value) {
-        if(isset($value)){
+    public function setATributoAttribute($value)
+    {
+        if (isset($value)) {
             $this->attributes['atributo_id'] = Atributo::where('id', $value)->first()->id;
         }
     }
+
     /**
      * Set the treino attribute.
      *
@@ -65,8 +71,9 @@ class Pessoa extends Model
      * @return void
      */
 
-    public function setTreinoAttribute($value) {
-            $this->treinoRelationship()->sync($value);
+    public function setTreinoAttribute($value)
+    {
+        $this->treinoRelationship()->sync($value);
     }
 
     //RELACIONAMENTOS
@@ -76,11 +83,13 @@ class Pessoa extends Model
      *
      * @return Atributo
      */
-    public function atributoRelationship() {
-        return $this->belongsTo(Atributo::class,'atributo_id');//Relacionamento 1 para 1
+    public function atributoRelationship()
+    {
+        return $this->belongsTo(Atributo::class, 'atributo_id'); //Relacionamento 1 para 1
     }
 
-    public function treinoRelationship() {
-        return $this->belongsToMany(Treino::class,'pessoas_has_treinos','pessoa_id','treino_id');//Relacionamento muitos para muitos;
+    public function treinoRelationship()
+    {
+        return $this->belongsToMany(Treino::class, 'pessoas_has_treinos', 'pessoa_id', 'treino_id'); //Relacionamento muitos para muitos;
     }
 }
